@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: centos
+  become: yes
+  become_method: sudo 
+  tasks:
+  - name: Add users | authorized key upload
+    import_role:
+      name: add_user-ss_key
