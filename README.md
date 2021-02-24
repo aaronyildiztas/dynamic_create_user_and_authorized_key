@@ -1,38 +1,52 @@
-Role Name
+
+Ansible: Create Users and Add SSH Key
 =========
+This play book create users and their ssh key's to remote machines. 
+How to setup:
+Shell = /bin/bash
+Add the public key in "files" dir (username.pub)
+In tasks/main.yml  specify that user should have the right to sudo or no
 
-A brief description of the role goes here.
-
-Requirements
+Distros tested
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Currently, this is only tested on Centos 7 as a client and server machine. It should theoretically work on Ubuntu or Debian based systems.
+
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+users:
+  - username: user1
+  - username: user2
+  - username: user3
+  - username: user4
+  - username: user5
+  
 
 Example Playbook
+------------
+
+- name: Add users | create users, shell, home dirs
+    user: name={{ item.username }} shell=/bin/bash createhome=yes comment='create with ansible'
+    with_items: '{{users}}'
+
+  - name: Setup | authorized key upload
+    authorized_key: user={{ item.username }}
+      key="{{ lookup('file', 'files/{{ item.username }}.pub') }}"
+    with_items: '{{users}}'
+
+Usage
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+install ansible
+create keys
+add key's to the username.pub file
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
+run command
+ansible-playbook (-i inventory_file) user_ssh_deploy.yml
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Aaron Yildiztas
