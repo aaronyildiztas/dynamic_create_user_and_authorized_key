@@ -23,7 +23,6 @@ users:
   - username: user4
   - username: user5
   
-
 Example Playbook
 ------------
 
