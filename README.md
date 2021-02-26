@@ -6,11 +6,11 @@
 
 Ansible: Create Users and Add SSH Key
 =========
-This play book create users and their ssh key's to remote machines. 
-How to setup:
-Shell = /bin/bash
-Add the public key in "files" dir (username.pub)
-In tasks/main.yml  specify that user should have the right to sudo or no
+- This play book create users and their ssh key's to remote machines. 
+- How to setup:
+- Shell = /bin/bash
+- Add the public key in "files" dir (username.pub)
+- In tasks/main.yml  specify that user should have the right to sudo or no
 
 Distros tested
 ------------
@@ -44,12 +44,12 @@ Example Playbook
 Usage
 ----------------
 
-install ansible
-create keys
-add key's to the username.pub file
+- install ansible
+- create keys
+- add key's to the username.pub file
 
-run command
-ansible-playbook (-i inventory_file) user_ssh_deploy.yml
+- run command
+- ansible-playbook (-i inventory_file) user_ssh_deploy.yml
 
 Author Information
 ------------------
