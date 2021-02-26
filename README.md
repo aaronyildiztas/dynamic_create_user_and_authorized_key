@@ -15,7 +15,7 @@ Ansible: Create Users and Add SSH Key
 Distros tested
 ------------
 
-Currently, this is only tested on Centos 7 as a client and server machine. It should theoretically work on Ubuntu or Debian based systems.
+- Currently, this is only tested on Centos 7 as a client and server machine. It should theoretically work on Ubuntu or Debian based systems.
 
 
 Role Variables
@@ -54,4 +54,4 @@ Usage
 Author Information
 ------------------
 
-Aaron Yildiztas
+- Aaron Yildiztas
