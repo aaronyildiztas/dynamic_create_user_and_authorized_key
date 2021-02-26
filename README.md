@@ -30,8 +30,8 @@ users:
   
 Example Playbook
 ------------
-
-- name: Add users | create users, shell, home dirs
+/*
+  - name: Add users | create users, shell, home dirs
     user: name={{ item.username }} shell=/bin/bash createhome=yes comment='create with ansible'
     with_items: '{{users}}'
 
@@ -39,6 +39,8 @@ Example Playbook
     authorized_key: user={{ item.username }}
       key="{{ lookup('file', 'files/{{ item.username }}.pub') }}"
     with_items: '{{users}}'
+    
+    */
 
 Usage
 ----------------
